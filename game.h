@@ -16,7 +16,6 @@ class game
 
 private:
 	int choice1;
-	int choice2;
 	bool playing;
 	int st;
 };

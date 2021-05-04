@@ -3,7 +3,6 @@ using namespace std;
 game::game()
 {
 	choice1 = 0;
-	choice2 = 0;
 	playing = true;
 }
 void game::mainMenu()
@@ -32,18 +31,6 @@ void game::mainMenu()
 	
 }
 
-/*void game::combatMenu()
-{
-	while (if player is in combat print the following menu)
-	{
-		cout << "Choose what you want to do: " << endl;
-		cout << "1. Attack" << endl;
-		cout << "2. Block" << endl;
-		cout << "3. Recover" << endl;
-		break;
-	}
-}
-*/
 /*void game::story()
 {
 	//while game is running, if player movement ++, go to next story
