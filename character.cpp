@@ -21,7 +21,7 @@ character::character()
 }
 void character::characterName()
 {
-	cout << "What is your name?" << endl;
+	cout << "What is your1 name?" << endl;
 	cin >> name;
 	cout << "Welcome: " << name << endl;
 	system("CLS");
