@@ -5,11 +5,28 @@ using namespace std;
 
 int main()
 {
+    srand(time(NULL));
     game game;
-    game.mainMenu();
     character character;
+    game.mainMenu();
+
+while (game.getPlaying())
+{
     character.characterName();
     character.characterStats();
-  
-    return 0;
+    //game.combatMenu();
+    character.characterMovement();
+    character.combatMenu();
+    break;
+    //character.characterMovement();
 }
+while (character.getPlaying())
+{
+    //character.characterStats();
+    break;
+}
+    return 0;
+
+}
+
+
