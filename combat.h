@@ -9,6 +9,6 @@ public:
 	combat();
 	void combatMenu();
 private:
-	int choice;
+	int choice;1
 };
 
