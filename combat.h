@@ -8,7 +8,9 @@ class combat
 public:
 	combat();
 	void combatMenu();
+	inline const bool getActiveCombat() const { return this->activeCombat; }
 private:
-	int choice;1
+	int choice;
+	bool activeCombat;
 };
 

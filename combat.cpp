@@ -6,13 +6,14 @@ using namespace std;
 combat::combat()
 {
 	choice = 0;
+	this->activeCombat = false;
 }
 void combat::combatMenu()
 {
 	character character;
 	character.characterStats();
 	character.printCharacterStats();
-	cout << "You encountered an enemy!!!" << endl;
+	cout << "You encountered an enemy!!!\n\n" << endl;
 	cout << "Choose what you want to do: " << endl;
 	cout << "1. Attack" << endl;
 	cout << "2. Block" << endl;
@@ -20,6 +21,7 @@ void combat::combatMenu()
 	cin >> (choice);
 	if (choice <= 3)
 	{
+		this->activeCombat = true;
 		if (choice == 1)
 		{
 			cout << "You attacked the enemy and dealt " << character.getRandomDamage() << " damage" << endl;

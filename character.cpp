@@ -21,7 +21,7 @@ character::character()
 }
 void character::characterName()
 {
-	cout << "What is your1 name?" << endl;
+	cout << "What is your name?" << endl;
 	cin >> name;
 	cout << "Welcome: " << name << endl;
 	system("CLS");
@@ -76,6 +76,7 @@ void character::characterMovement()
 			this->move++;
 			if (this->move == 3)
 			{
+				system("CLS");
 				combat.combatMenu();
 			}
 		}
