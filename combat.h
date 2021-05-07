@@ -3,6 +3,7 @@
 #include<string>
 #include<iomanip>
 #include<ctime>
+
 class combat
 {
 public:
@@ -11,6 +12,8 @@ public:
 	inline const bool getActiveCombat() const { return this->activeCombat; }
 private:
 	int choice;
+	int choice2;
 	bool activeCombat;
+	int counter;
 };
 

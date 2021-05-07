@@ -11,7 +11,7 @@ void game::mainMenu()
 	cout << "\n";
 	cout << setw(67);
 	cout << "The Adventurer\n\n\n";
-	cout << "Press one of the following buttons to: \n";
+	cout << "Press one of the following buttons to:3 \n";
 	cout << "1. Start your adventure!\n";
 	cout << "0. Exit\n";
 	cout << "Enter: ";
