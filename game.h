@@ -4,20 +4,21 @@
 #include<iomanip>
 #include<ctime>
 
+using namespace std;
+
 class game
 {
 	public:
 		game();
 		void mainMenu();
-		//void story();
-		//void combatMenu();
 
 		inline bool getPlaying() const { return this->playing; }
 
 private:
 	int choice1;
-	bool playing;
 	int st;
+
+	bool playing;
 };
 
 

@@ -4,6 +4,7 @@
 #include<iomanip>
 #include<ctime>
 
+using namespace std;
 
 class enemy
 {
@@ -18,13 +19,13 @@ public:
 	inline const int& getDamageMin() const { return this->damageMin; }
 	inline const int& getDamageMax() const { return this->damageMax; }
 	inline const int& getLvl() const { return this->lvl; }
-	inline const int& getDropExp() const { return this->dropexp; }
+	inline const bool& getDeathState() { return this->deathState; }
 private:
+	bool deathState;
 	int hp;
 	int hpMax;
 	int damageMin;
 	int damageMax;
 	int lvl;
-	int dropexp;
 };
 

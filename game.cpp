@@ -1,5 +1,4 @@
 #include "game.h"
-using namespace std;
 game::game()
 {
 	choice1 = 0;
@@ -30,16 +29,3 @@ void game::mainMenu()
 	}
 	
 }
-
-/*void game::story()
-{
-	//while game is running, if player movement ++, go to next story
-	//if player movement --, return to the previous story
-	while (choice1 == 1)
-	{
-		if 
-		st++;
-
-
-	}
-}*/

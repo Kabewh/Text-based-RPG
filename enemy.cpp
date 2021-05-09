@@ -1,11 +1,10 @@
 #include "enemy.h"
 #include "character.h"
 #include "combat.h"
-using namespace std;
 
 enemy::enemy()
 {
-	this->dropexp = 0;
+	this->deathState = false;
 	this->hp = 0;
 	this->hpMax = 0;
 	this->damageMin = 0;
@@ -15,7 +14,6 @@ enemy::enemy()
 void enemy::enemyStats()
 {
 	character character;
-	this->dropexp = character.getExp() + 3;
 	this->hp = 120;
 	this->hpMax = 120;
 	this->damageMin = 15;
@@ -46,7 +44,6 @@ void enemy::death()
 	if (this->hp <= 0)
 	{
 		this->hp = 0;
-		cout << "Enemy killed, you gained " << this->dropexp << " xp" << endl;
-		combat.getActiveCombat() == false;
+		this->deathState = true;
 	}
 }

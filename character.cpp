@@ -1,9 +1,10 @@
 #include "combat.h"
 #include "character.h"
-using namespace std;
-//movement, enemy, refresh stats, do/take damage
+#include "enemy.h"
+
 character::character()
 {
+	this->name = name;
 	this->playing = true;
 	this->resting = false;
 	this->randomDamage = 0;
@@ -16,28 +17,29 @@ character::character()
 	this->expNext = 0;
 	this->hp = 0;
 	this->hpMax = 0;
-	damageMin = 0;
-	damageMax = 0;
+	this->damageMin = 0;
+	this->damageMax = 0;
 }
 void character::characterName()
 {
-	cout << "What is your1 name?" << endl;
-	cin >> name;
-	cout << "Welcome: " << name << endl;
+	cout << "What is your name?" << endl;
+	cin >> this->name;
+	cout << "Welcome: " << this->name << endl;
 	system("CLS");
 	
 }
 
-void character::characterStats()
+void character::characterStats(const std::string name)
 {
+	this->name = name;
 	this->lvl = 1;
-	this->exp = 0;
-	this->expNext = 20;
+	this->exp = exp;
+	this->expNext = exp + 20;
 	this->hp = 180;
 	this->hpMax = 200;
-	damageMin = 30;
-	damageMax = 50;
-	this->randomDamage = damageMin + rand() % ((damageMax + 1) - damageMin);
+	this->damageMin = 10;
+	this->damageMax = 20;
+	this->randomDamage = this->damageMin + rand() % ((this->damageMax + 1) - this->damageMin);
 	this->blockDamage = rand() % 2;
 	
 }
@@ -51,7 +53,7 @@ void character::printCharacterStats()
 	}
 	else if (playing == true)
 	{
-		cout << "Name: " << name << endl;
+		cout << "Name: " << this->name << endl;
 		cout << "Lvl: " << this->lvl << endl;
 		cout << "Exp: " << this->exp << "/" << this->expNext << endl;
 		cout << "Hp: " << this->hp << "/" << this->hpMax << endl;
@@ -61,35 +63,28 @@ void character::characterMovement()
 {
 	combat combat;
 	while (playing == true)
-	{
-		if (this->choice2 <= 3)
+	{	
+		if (combat.getActiveCombat() == false)
 		{
-			cout << "\n\n\n\n\n(1) Move forward (2) Move backwards (3) Rest " << endl;
+			cout << "\n\n\n\n\n(1) Move forward (3) Rest " << endl;
 		}
-		
 		cin >> this->choice2;
 		if (this->choice2 == 1)
 		{
 			system("CLS");
-			characterStats();
 			cout << "\n\n\n\nYou're moving forwards..." << endl;
 			this->move++;
-			if (this->move == 3)
+			if (this->move % 3 == 0)
 			{
+				system("CLS");
 				combat.combatMenu();
 			}
 		}
-		if (this->choice2 == 2)
-		{
-			system("CLS");
-			characterStats();
-			cout << "\n\n\n\nYou're moving backwards..." << endl;
-			this->move--;
-		}
+		
 		if (this->choice2 == 3)
 		{
 			system("CLS");
-			cout << "Name: " << name << endl;
+			cout << "Name: " << this->name << endl;
 			cout << "Lvl: " << this->lvl << endl;
 			cout << "Exp: " << this->exp << "/" << this->expNext << endl;
 			cout << "Hp: " << this->hp << "/" << this->hpMax << endl;
@@ -103,31 +98,23 @@ void character::characterMovement()
 	}
 }
 
-/*void character::combatMenu()
+void character::recieveDamage()
 {
-	cout << "You encountered an enemy!!!" << endl;
-	cout << "Choose what you want to do: " << endl;
-	cout << "1. Attack" << endl;
-	cout << "2. Block" << endl;
-	cout << "3. Recover" << endl;
-	cin >> choice3;
-	if (choice3 <= 3)
+	enemy enemy;
+	this->hp -= this->randomDamage;
+	if (this->hp <= 0)
 	{
-		if (choice3 == 1)
-		{
-			cout << "You attacked the enemy and dealt " << randomDamage << " damage" << endl;
-		}
-		if (choice3 == 2)
-		{
-			if (blockDamage == 1)
-			{
-				cout << "You blocked the incoming damage succesfully " << endl;
-			}
-			else
-			{
-				cout << "You failed to block the incoming damage " << endl;
-			}
-		}
-	
+		this->hp = 0;
 	}
-}*/
+}
+
+void character::recieveExp()
+{
+	enemy enemy;
+	this->exp += 4;
+	if (this->exp >= this->expNext)
+	{
+		this->lvl++;
+		this->exp = 0;
+	}
+}
